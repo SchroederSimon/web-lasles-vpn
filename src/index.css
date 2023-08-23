@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  padding: 0 2% 0 2%;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat';
+}
+
+
+:root {
+  --colorRed: #F53838;
+  --colorWhiteFont: #fff;
+  --colorGrey: rgb(192, 192, 192);
+}
+
+.button-red-primary {
+  background-color: var(--colorRed);
+  border: none;
+  color: var(--colorWhiteFont);
+  padding: 10px 20px;
+  border: 1px solid var(--colorRed);
+}
+
+.button-red-secondary {
+  border: 1px solid var(--colorRed);
+  padding: 10px 20px;
+  color: var(--colorRed);
+  background-color: transparent;
+}

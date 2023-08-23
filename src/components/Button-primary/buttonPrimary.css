@@ -1,0 +1,22 @@
+.button-primary {
+  width: 177px;
+  height: 45px;
+  background-color: transparent;
+  border: none;
+  color: var(--colorRed);
+  padding: 10px 20px;
+  border: 1px solid var(--colorRed);
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.button-primary-transparent {
+  background-color: transparent;
+  border: none;
+}
+
+.button-primary-solid {
+  background-color: var(--colorRed);
+  color: var(--colorWhiteFont);
+  box-shadow: 0px 15px 30px -10px #f53838b9;
+}
