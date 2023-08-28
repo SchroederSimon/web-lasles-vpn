@@ -4,4 +4,4 @@ export interface PricingInfo {
     benefits: string[];
     currency: "U$S" | "$ARG";
     type: "monthly" | "daily" | "weekly";
-};
+}

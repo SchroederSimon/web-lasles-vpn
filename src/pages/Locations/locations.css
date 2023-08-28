@@ -17,3 +17,28 @@
     gap: 20px;
     text-align: center;
 }
+
+.locations-title h2{
+    width: 70%;
+}
+
+.locations-title span{
+    font-weight: 700;
+}
+
+.locations-image{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.locations-image img{
+    width: 100%;
+}
+
+@media screen and (max-width: 550px) {
+
+
+}

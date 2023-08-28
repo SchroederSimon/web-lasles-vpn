@@ -1,74 +1,82 @@
 import "./customers.css";
-import { usersReview } from "../../utils/data";
 import { CustomerInterface } from "../../interfaces/Customer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { BASE_URL } from "../Pricing/Pricing";
+import { usersReview } from "../../utils/data";
 
 export const Customers = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const reviewsPerPage = 3;
+  const [testimonials, setTestimonials] = useState<CustomerInterface[]>([]);
+  const [startIndex, setStartIndex] = useState(0);
 
-  const handleNextClick = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % usersReview.length);
-  };
+  useEffect(() => {
+    fetch(`${BASE_URL}/api/testimonial`)
+      .then((response) => response.json())
+      .then((apiData: CustomerInterface[]) => {
+        const combinedData = apiData.map((testimonial, index) => ({
+          ...testimonial,
+          ...usersReview[index],
+        }));
+        setTestimonials(combinedData);
+      })
+      .catch((error) => {
+        console.error("Error fetching testimonials:", error);
+      });
+  }, []);
 
-  const handlePrevClick = () => {
-    setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + usersReview.length) % usersReview.length
-    );
-  };
-
-  const totalPages = Math.ceil(usersReview.length / reviewsPerPage);
+  const isMobile = window.innerWidth <= 550;
 
   return (
-    <div className="customers-container">
+    <div className="customers-container padding">
       <div className="customers-title">
-        <h2 className="text-3xl font-bold">
-          Trusted by Thousands of Happy Customer
-        </h2>
+        <h2>Trusted by Thousands of Happy Customer</h2>
         <p>
           These are the stories of our customers who have joined us with great
           pleasure when using this amazing feature.
         </p>
       </div>
       <div className="customers-card-container">
-        {usersReview
-          .slice(currentIndex, currentIndex + 3)
-          .map((customer: CustomerInterface, index: number) => (
+        {testimonials
+          .slice(startIndex, startIndex + (isMobile ? 1 : 3))
+          .map((testimonial, index) => (
             <div
-              className={`customer-card ${index === 0 ? "active" : ""}`}
-              key={currentIndex + index}
+              className={`customer-card ${index === 0 ? "active-card" : ""}`}
+              key={testimonial.testimonial}
             >
               <div className="customer-card-user-profile">
-                <img src={customer.image} alt={customer.customer} />
-                <div className="customer-card-name">
-                  <strong>{customer.customer}</strong>
-                  <p>{customer.location}</p>
+                <div className="customer-circle">
+                  <img src={testimonial.avatar} alt={testimonial.fullName} />
                 </div>
-                <p>{customer.rate}</p>
+                <div className="customer-card-name">
+                  <strong>{testimonial.fullName}</strong>
+                  <p>{testimonial.location}</p>
+                </div>
+                <p>{testimonial.rate}</p>
                 <i className="fa-solid fa-star"></i>
               </div>
               <div className="customer-card-user-description">
-                <p>{customer.description}</p>
+                <p>{testimonial.testimonial}</p>
               </div>
             </div>
           ))}
       </div>
       <div className="customers-slider-components">
         <div className="pagination-dots">
-          {Array.from({ length: totalPages }).map((_, i) => (
+          {testimonials.map((_, index) => (
             <div
-              key={i}
-              className={`dot ${
-                Math.floor(currentIndex / reviewsPerPage) === i ? "active" : ""
-              }`}
+              key={index}
+              className={`dot ${startIndex === index ? "active-dot" : ""}`}
             ></div>
           ))}
         </div>
         <div className="customers-buttons">
-          <button onClick={handlePrevClick}>
+          <button onClick={() => setStartIndex(Math.max(0, startIndex - 1))}>
             <i className="fa-solid fa-arrow-left fa-lg"></i>
           </button>
-          <button onClick={handleNextClick}>
+          <button
+            onClick={() =>
+              setStartIndex(Math.min(testimonials.length - 1, startIndex + 1))
+            }
+          >
             <i className="fa-solid fa-arrow-right fa-lg"></i>
           </button>
         </div>
@@ -78,63 +86,36 @@ export const Customers = () => {
 };
 
 /**
-<div className="customers">
-        <div className="customers-card-container">
-          <div className="customer-card">
-            <div className="customer-card-user-profile">
-                <img src={Viezh} alt="" />
-              <div className="customer-card-name">
-                <strong>Viezh Robert</strong>
-                <p>Warsaw, Poland</p>
-              </div>
-              <p>4.5</p>
-              <i className="fa-regular fa-star"></i>
-            </div>
-            <div className="customer-card-user-description">
-              <p>
-                "Wow... I am very happy to use this VPN, it turned to be more
-                than my expectations and so far there have been no problems.
-                LaslesVPN always the best".
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="customers-card-container">
-          <div className="customer-card">
-            <div className="customer-card-user-profile">
-              <img src={Viezh} alt="" />
-              <strong>Viezh Robert</strong>
-              <p>Warsaw, Poland</p>
-              <strong>4.5</strong>
-              <i className="fa-regular fa-star"></i>
-            </div>
-            <div className="customer-card-user-description">
-              <p>
-                "Wow... I am very happy to use this VPN, it turned to be more
-                than my expectations and so far there have been no problems.
-                LaslesVPN always the best".
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="customers-card-container">
-          <div className="customer-card">
-            <div className="customer-card-user-profile">
-              <img src={Viezh} alt="" />
-              <strong>Viezh Robert</strong>
-              <p>Warsaw, Poland</p>
-              <strong>4.5</strong>
-              <i className="fa-regular fa-star"></i>
-            </div>
-            <div className="customer-card-user-description">
-              <p>
-                "Wow... I am very happy to use this VPN, it turned to be more
-                than my expectations and so far there have been no problems.
-                LaslesVPN always the best".
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
- */
+
+  //const [currentIndex, setCurrentIndex] = useState(0);
+  /*
+  const handleNextClick = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
+  };
+
+  const handlePrevClick = () => {
+    setCurrentIndex(
+      (prevIndex) => (prevIndex - 1 + testimonials.length) % testimonials.length
+    );
+  };
+
+  const totalPages = Math.ceil(testimonials.length / reviewsPerPage);
+*/
+{
+  /* {Array.from({ length: totalPages }).map((_, i) => (
+            <div
+              key={i}
+              className={`dot ${
+                Math.floor(currentIndex / reviewsPerPage) === i ? "active" : ""
+              }`}
+            ></div>
+          ))} */
+}
+{
+  /* <button onClick={handlePrevClick}>
+            <i className="fa-solid fa-arrow-left fa-lg"></i>
+          </button>
+          <button onClick={handleNextClick}>
+            <i className="fa-solid fa-arrow-right fa-lg"></i>
+          </button> */
+}

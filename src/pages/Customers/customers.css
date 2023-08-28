@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   gap: 30px;
-  height: 100vh;
+  height: 80vh;
   width: 100%;
 }
 
@@ -32,7 +32,7 @@
   flex-direction: column;
   width: 100%;
   max-width: calc(100% / 3 - 30px);
- border: 1px solid var(--colorGrey);
+  border: 2px solid var(--colorGrey);
   border-radius: 10px;
 }
 
@@ -44,7 +44,16 @@
   width: 100%;
   padding: 1%;
 }
+.customer-circle {
+  width: 100%;
+  height: auto;
+}
 
+.customer-circle img {
+  width: 70%;
+  height: 70%;
+  border-radius: 50%;
+}
 .customer-card-name {
   width: 100%;
 }
@@ -53,7 +62,7 @@
   font-size: 0.8em;
 }
 .customers-buttons {
-    display: flex;
+  display: flex;
 }
 .customers-buttons button {
   width: 60px;
@@ -69,33 +78,41 @@
   color: var(--colorRed);
 }
 
-.customer-card.active {
-    border: 1px solid red;
-  }
+.active-card {
+  border: 2px solid var(--colorRed);
+}
 
-  .customers-slider-components{
+.customers-slider-components {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Dots */
+
+.pagination-dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background-color: var(--colorGrey);
+  border-radius: 50%;
+  margin: 0 5px;
+}
+
+.active-dot {
+  background-color: var(--colorRed);
+}
+
+@media screen and (max-width: 550px){
+  .customers-title{
     width: 100%;
-    display: flex;
-    justify-content: space-between;
   }
-
-  /* Dots */
-
-  .pagination-dots {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 10px;
+  .customer-card {
+    max-width: 100%; 
   }
-  
-  .dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: var(--colorGrey);
-    cursor: pointer;
-  }
-  
-  .dot.active {
-    background-color: var(--colorRed);
-  }
+}

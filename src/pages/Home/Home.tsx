@@ -3,15 +3,12 @@ import { Illustration, User, Location, Server } from '../../utils/SVGS';
 
 export const Home = () => {
   return (
-    <>
-      <main className="hero">
+      <main className="hero padding">
         <div className="hero-middle-content">
           <div className="hero-left-side">
-            <h1 className='text-4xl font-bold'>Want anything to be easy with<span>LaslesVPN.</span></h1>
-            <p>Provide a network for all your needs with ease and fun using
-              LaslesVPN discover interesting features from us.
-            </p>
-            <button className="button-red-primary">Get Started</button>
+            <h1>Want anything to be easy with<span>LaslesVPN.</span></h1>
+            <p>Provide a network for all your needs with ease and fun using<span>LaslesVPN</span>discover interesting features from us.</p>
+            <button className="button-primary-solid"><span>Get Started</span></button>
           </div>
           <div className="hero-right-side">
             <img src={Illustration} alt="" />
@@ -43,6 +40,5 @@ export const Home = () => {
           </div>
         </div>
       </main>
-    </>
   )
 }

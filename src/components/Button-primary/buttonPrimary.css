@@ -20,3 +20,7 @@
   color: var(--colorWhiteFont);
   box-shadow: 0px 15px 30px -10px #f53838b9;
 }
+
+button span{
+  font-weight: 700;
+}

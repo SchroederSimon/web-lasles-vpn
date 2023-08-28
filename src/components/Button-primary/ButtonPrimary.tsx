@@ -9,7 +9,7 @@ function ButtonPrimary({ theme }: { theme: Theme }) {
   return (
     <div className={`button-primary ${theme.backgroundclass}`}>
       <button>
-        <strong>{theme.textclass}</strong>
+        <span>{theme.textclass}</span>
       </button>
     </div>
   );
