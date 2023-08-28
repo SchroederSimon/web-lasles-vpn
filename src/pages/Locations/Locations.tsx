@@ -7,7 +7,7 @@ export const Locations = () => {
       <div className="locations-title">
         <h2>Huge Global Network of Fast VPN</h2>
         <p>
-          See<span>LaslessVPN</span>everywhere to make it easier for you
+          See <span>LaslessVPN</span> everywhere to make it easier for you
           when you move locations.
         </p>
       </div>

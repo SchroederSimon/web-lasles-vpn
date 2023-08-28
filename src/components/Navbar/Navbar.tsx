@@ -9,6 +9,7 @@ export const Navbar = () => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+  
   const theme = {
     textclass: "Sign Up",
   };

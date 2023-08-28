@@ -1,27 +1,8 @@
 import "./customers.css";
-import { CustomerInterface } from "../../interfaces/Customer";
-import { useEffect, useState } from "react";
-import { BASE_URL } from "../Pricing/Pricing";
-import { usersReview } from "../../utils/data";
+import { CustomersLogic } from "../../apiCalls/customersTestimonial";
 
 export const Customers = () => {
-  const [testimonials, setTestimonials] = useState<CustomerInterface[]>([]);
-  const [startIndex, setStartIndex] = useState(0);
-
-  useEffect(() => {
-    fetch(`${BASE_URL}/api/testimonial`)
-      .then((response) => response.json())
-      .then((apiData: CustomerInterface[]) => {
-        const combinedData = apiData.map((testimonial, index) => ({
-          ...testimonial,
-          ...usersReview[index],
-        }));
-        setTestimonials(combinedData);
-      })
-      .catch((error) => {
-        console.error("Error fetching testimonials:", error);
-      });
-  }, []);
+  const { testimonials, startIndex, setStartIndex } = CustomersLogic();
 
   const isMobile = window.innerWidth <= 550;
 
@@ -84,38 +65,3 @@ export const Customers = () => {
     </div>
   );
 };
-
-/**
-
-  //const [currentIndex, setCurrentIndex] = useState(0);
-  /*
-  const handleNextClick = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
-  };
-
-  const handlePrevClick = () => {
-    setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + testimonials.length) % testimonials.length
-    );
-  };
-
-  const totalPages = Math.ceil(testimonials.length / reviewsPerPage);
-*/
-{
-  /* {Array.from({ length: totalPages }).map((_, i) => (
-            <div
-              key={i}
-              className={`dot ${
-                Math.floor(currentIndex / reviewsPerPage) === i ? "active" : ""
-              }`}
-            ></div>
-          ))} */
-}
-{
-  /* <button onClick={handlePrevClick}>
-            <i className="fa-solid fa-arrow-left fa-lg"></i>
-          </button>
-          <button onClick={handleNextClick}>
-            <i className="fa-solid fa-arrow-right fa-lg"></i>
-          </button> */
-}

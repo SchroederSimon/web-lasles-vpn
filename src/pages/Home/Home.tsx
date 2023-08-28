@@ -6,8 +6,8 @@ export const Home = () => {
       <main className="hero padding">
         <div className="hero-middle-content">
           <div className="hero-left-side">
-            <h1>Want anything to be easy with<span>LaslesVPN.</span></h1>
-            <p>Provide a network for all your needs with ease and fun using<span>LaslesVPN</span>discover interesting features from us.</p>
+            <h1>Want anything to be easy with <span>LaslesVPN.</span></h1>
+            <p>Provide a network for all your needs with ease and fun using <span>LaslesVPN</span> discover interesting features from us.</p>
             <button className="button-primary-solid"><span>Get Started</span></button>
           </div>
           <div className="hero-right-side">

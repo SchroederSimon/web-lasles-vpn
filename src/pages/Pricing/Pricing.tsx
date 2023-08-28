@@ -1,16 +1,10 @@
 import "../Pricing/Pricing.css";
 import { Free, Standard, Premium } from "../../utils/SVGS";
 import ButtonPrimary from "../../components/Button-primary/ButtonPrimary";
-import { PricingInfo } from "../../interfaces/PricingInfo";
-import { useEffect, useState } from "react";
-
-export const BASE_URL =
-  "https://6xrb5goi1l.execute-api.us-east-1.amazonaws.com";
+import { PricingLogic } from "../../apiCalls/pricingAPI";
 
 export const Pricing = () => {
-  const [subscriptions, setSubscriptions] = useState<PricingInfo[]>([]);
-  const [error, setError] = useState<string>();
-  const [selectedBox, setSelectedBox] = useState<number | null>(null);
+  const { subscriptions, selectedBox, handleBoxClick } = PricingLogic();
 
   const theme = {
     backgroundclass: "button-primary",
@@ -20,22 +14,6 @@ export const Pricing = () => {
   const theme2 = {
     backgroundclass: "button-primary-solid",
     textclass: "Select",
-  };
-
-  useEffect(() => {
-    fetch(`${BASE_URL}/api/subscription`)
-      .then((response) => {
-        response.json().then((result) => {
-          setSubscriptions(result);
-        });
-      })
-      .catch((error) => {
-        setError(error.message);
-      });
-  }, []);
-
-  const handleBoxClick = (index: number) => {
-    setSelectedBox(index);
   };
 
   return (
@@ -55,7 +33,15 @@ export const Pricing = () => {
             onClick={() => handleBoxClick(index)}
           >
             <div className="pricing-box-title-img">
-              <img src={Free} alt="" />
+              {subscription.title === "Free Plan" && (
+                <img src={Free} alt="Free" />
+              )}
+              {subscription.title === "Standard Plan" && (
+                <img src={Standard} alt="Standard" />
+              )}
+              {subscription.title === "Premium Plan" && (
+                <img src={Premium} alt="Premium" />
+              )}
               <strong>{subscription.title}</strong>
             </div>
             <ul className="pricing-benefits">

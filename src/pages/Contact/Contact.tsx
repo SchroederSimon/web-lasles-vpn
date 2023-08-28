@@ -1,50 +1,9 @@
 import "./contact.css";
-import { BASE_URL } from "../Pricing/Pricing";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
+import { ContactLogic } from "../../apiCalls/contactForm";
 
 export const Contact = () => {
-  const schema = yup
-    .object({
-      name: yup.string().required(),
-      email: yup.string().required().email(),
-      phoneNumber: yup
-        .string()
-        .min(6, "lo minimo es 10 loko")
-        .max(99)
-        .required(),
-      text: yup.string().min(6, "lo minimo es 10 loko").max(100).required(),
-    })
-    .required();
+  const { register, handleSubmit, errors, onSubmit } = ContactLogic();
 
-  type FormData = yup.InferType<typeof schema>;
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm<FormData>({
-    resolver: yupResolver(schema),
-  });
-  const onSubmit = (data: FormData) => {
-    fetch(`${BASE_URL}/api/send-email`, {
-      method: "POST",
-      body: JSON.stringify(data),
-    })
-      .then((response) => {
-        if (response.ok) {
-          alert("Form sent");
-          reset();
-        } else {
-          alert("Error sending form");
-        }
-      })
-      .catch((error) => {
-        alert(error.message);
-      });
-  };
   return (
     <div className="contact-container padding">
       <h2>Contact Us</h2>
