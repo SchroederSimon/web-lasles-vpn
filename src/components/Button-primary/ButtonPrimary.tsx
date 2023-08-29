@@ -2,14 +2,14 @@ import "./buttonPrimary.css";
 
 interface Theme {
   backgroundclass?: string;
-  textclass: string;
+  text: string;
 }
 
 function ButtonPrimary({ theme }: { theme: Theme }) {
   return (
     <div className={`button-primary ${theme.backgroundclass}`}>
       <button>
-        <span>{theme.textclass}</span>
+        <span>{theme.text}</span>
       </button>
     </div>
   );

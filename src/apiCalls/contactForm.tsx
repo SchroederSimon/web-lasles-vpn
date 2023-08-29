@@ -8,8 +8,8 @@ import { BASE_URL } from "./baseURL";
 const schema = yup.object({
   name: yup.string().required(),
   email: yup.string().required().email(),
-  phoneNumber: yup.string().min(6, "Minimum length is 6").max(99).required(),
-  text: yup.string().min(6, "Minimum length is 6").max(100).required(),
+  phoneNumber: yup.string().min(6, "minimum length is 6").max(99).required(),
+  text: yup.string().min(6, "minimum length is 6").max(100).required(),
 });
 
 type FormData = yup.InferType<typeof schema>;

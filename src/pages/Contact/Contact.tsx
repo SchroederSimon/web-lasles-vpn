@@ -1,8 +1,13 @@
 import "./contact.css";
 import { ContactLogic } from "../../apiCalls/contactForm";
+import ButtonPrimary from "../../components/Button-primary/ButtonPrimary";
 
 export const Contact = () => {
   const { register, handleSubmit, errors, onSubmit } = ContactLogic();
+
+  const theme = {
+    text: "Send",
+  };
 
   return (
     <div className="contact-container padding">
@@ -31,7 +36,9 @@ export const Contact = () => {
           <textarea {...register("text")} />
           <p>{errors.text?.message}</p>
         </div>
-        <input type="submit" />
+        <div className="contact-button">
+          <ButtonPrimary theme={theme} />
+        </div>
       </form>
     </div>
   );

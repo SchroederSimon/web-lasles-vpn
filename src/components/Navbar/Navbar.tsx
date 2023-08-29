@@ -9,14 +9,14 @@ export const Navbar = () => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-  
+
   const theme = {
-    textclass: "Sign Up",
+    text: "Sign Up",
   };
 
   const theme2 = {
     backgroundclass: "button-primary-transparent",
-    textclass: "Sign In",
+    text: "Sign In",
   };
 
   return (

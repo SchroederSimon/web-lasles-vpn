@@ -24,9 +24,7 @@ export const Customers = () => {
               key={testimonial.testimonial}
             >
               <div className="customer-card-user-profile">
-                <div className="customer-circle">
-                  <img src={testimonial.avatar} alt={testimonial.fullName} />
-                </div>
+                <img src={testimonial.avatar} alt={testimonial.fullName} />
                 <div className="customer-card-name">
                   <strong>{testimonial.fullName}</strong>
                   <p>{testimonial.location}</p>
@@ -42,7 +40,7 @@ export const Customers = () => {
       </div>
       <div className="customers-slider-components">
         <div className="pagination-dots">
-          {testimonials.map((_, index) => (
+          {testimonials.map((X, index) => (
             <div
               key={index}
               className={`dot ${startIndex === index ? "active-dot" : ""}`}

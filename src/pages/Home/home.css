@@ -44,6 +44,7 @@
   border-radius: 10px;
   border: none;
   font-size: 1em;
+  cursor: pointer;
 }
 
 .hero-right-side {

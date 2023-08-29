@@ -29,6 +29,11 @@
   width: 80%;
 }
 
+.contact-inputs p{
+    margin-top: 10px;
+    color: var(--colorGrey);
+}
+
 .contact-inputs input {
   height: 4vh;
   outline: none;
@@ -45,6 +50,8 @@
 .contact-inputs textarea:focus {
   border: 1px solid var(--colorRed);
 }
+
+
 
 @media screen and (max-width: 550px) {
   .contact-form {

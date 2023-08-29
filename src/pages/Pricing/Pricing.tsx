@@ -7,13 +7,7 @@ export const Pricing = () => {
   const { subscriptions, selectedBox, handleBoxClick } = PricingLogic();
 
   const theme = {
-    backgroundclass: "button-primary",
-    textclass: "Select",
-  };
-
-  const theme2 = {
-    backgroundclass: "button-primary-solid",
-    textclass: "Select",
+    text: "Select",
   };
 
   return (
@@ -56,11 +50,7 @@ export const Pricing = () => {
                 <strong>{subscription.price}</strong> {subscription.currency}{" "}
                 {subscription.type}
               </p>
-              {selectedBox === index ? (
-                <ButtonPrimary theme={theme2} />
-              ) : (
-                <ButtonPrimary theme={theme} />
-              )}
+              <ButtonPrimary theme={theme} />
             </div>
           </div>
         ))}
