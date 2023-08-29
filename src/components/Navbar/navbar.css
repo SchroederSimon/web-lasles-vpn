@@ -9,7 +9,7 @@
 
 .navbar img {
   width: 20%;
-  padding: 0;
+  margin-right: 10px;
 }
 
 .nav-links {
@@ -21,7 +21,7 @@
 .nav-links ul {
   display: flex;
   justify-content: center;
-  gap: 25px;
+  gap: 20px;
   list-style: none;
 }
 
@@ -56,7 +56,7 @@
   }
 
   .navbar.active {
-    box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.76);
+    box-shadow: 0 0 0 100vmax rgb(0, 0, 0);
   }
 
   .navbar img{
@@ -71,15 +71,18 @@
     display: none;
     
   }
+  
   .nav-links.active ul {
     position: absolute;
     display: flex; 
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
     right: 0;
     top: 90px;
     background-color: var(--colorWhiteFont);
     padding: 6%;
     border-radius: 0 0 0 10px;
   }
+
 }

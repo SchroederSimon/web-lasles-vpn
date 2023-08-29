@@ -1,22 +1,17 @@
 import "../Navbar/navbar.css";
 import { Logo } from "../../utils/SVGS";
 import ButtonPrimary from "../Button-primary/ButtonPrimary";
-import { useState } from "react";
+import { NavbarProps } from "../../interfaces/IsOpen";
 
-export const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+export const Navbar: React.FC<NavbarProps> = ({ isMenuOpen, toggleMenu }) => {
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-  
   const theme = {
-    textclass: "Sign Up",
+    text: "Sign Up",
   };
 
   const theme2 = {
     backgroundclass: "button-primary-transparent",
-    textclass: "Sign In",
+    text: "Sign In",
   };
 
   return (

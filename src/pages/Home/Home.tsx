@@ -1,9 +1,11 @@
 import '../Home/home.css'
 import { Illustration, User, Location, Server } from '../../utils/SVGS';
+import { NavbarProps } from '../../interfaces/IsOpen';
 
-export const Home = () => {
+export const Home: React.FC<NavbarProps> = ({ isMenuOpen }) => {
+  
   return (
-      <main className="hero padding">
+      <main className={`hero padding ${isMenuOpen ? "active" : ""}`}>
         <div className="hero-middle-content">
           <div className="hero-left-side">
             <h1>Want anything to be easy with <span>LaslesVPN.</span></h1>

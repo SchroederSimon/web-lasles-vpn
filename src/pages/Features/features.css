@@ -42,6 +42,7 @@
 
 @media screen and (max-width: 550px) {
   .feature-container {
+    margin-top: 20px;
     height: auto;
     display: flex;
     flex-direction: column;

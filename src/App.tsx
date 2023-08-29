@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./App.css";
 //import ButtonPrimary from "./components/Button-primary/ButtonPrimary";
 import { Navbar } from "./components/Navbar/Navbar";
@@ -10,10 +11,16 @@ import { Locations } from "./pages/Locations/Locations";
 import { Pricing } from "./pages/Pricing/Pricing";
 
 function App() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <>
-      <Navbar />
-      <Home />
+      <Navbar isMenuOpen={isMenuOpen} toggleMenu={toggleMenu}/>
+      <Home isMenuOpen={isMenuOpen}/>
       <Features />
       <Pricing />
       <Locations />

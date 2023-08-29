@@ -8,6 +8,7 @@
   border: 1px solid var(--colorRed);
   border-radius: 50px;
   cursor: pointer;
+  text-align: center;
 }
 
 .button-primary-transparent {
@@ -23,4 +24,11 @@
 
 button span{
   font-weight: 700;
+  cursor: pointer;
+}
+
+.button-primary:hover{
+  background-color: var(--colorRed);
+  color: var(--colorWhiteFont);
+  box-shadow: 0px 15px 30px -10px #f53838b9;
 }
