@@ -5,6 +5,13 @@ import { NavbarProps } from "../../interfaces/IsOpen";
 
 export const Navbar: React.FC<NavbarProps> = ({ isMenuOpen, toggleMenu }) => {
 
+<<<<<<< HEAD
+=======
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+>>>>>>> ae9aab69e42c293d2281d22cb35c40687b67acac
   const theme = {
     text: "Sign Up",
   };

@@ -6,7 +6,7 @@ import { PricingInfo } from "../interfaces/PricingInfo";
 export const PricingLogic = () => {
   const [subscriptions, setSubscriptions] = useState<PricingInfo[]>([]);
   const [error, setError] = useState<string>();
-  const [selectedBox, setSelectedBox] = useState<number | null>(null);
+  const [selectedBox, setSelectedBox] = useState<number>();
 
   useEffect(() => {
     fetch(`${BASE_URL}/api/subscription`)

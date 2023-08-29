@@ -62,4 +62,8 @@ export const Customers = () => {
       </div>
     </div>
   );
+<<<<<<< HEAD
 }
+=======
+};
+>>>>>>> ae9aab69e42c293d2281d22cb35c40687b67acac
