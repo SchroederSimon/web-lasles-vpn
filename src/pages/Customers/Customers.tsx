@@ -1,10 +1,28 @@
+import { useState } from "react";
+import useGetData from "../../apiCalls/useGetData";
+import { CustomerInterface } from "../../interfaces/Customer";
 import "./customers.css";
-import { CustomersLogic } from "../../apiCalls/customersTestimonial";
+import ErrorPage from "../../components/Error/errorPage";
 
 export const Customers = () => {
-  const { testimonials, startIndex, setStartIndex } = CustomersLogic();
+  const [startIndex, setStartIndex] = useState(0);
 
   const isMobile = window.innerWidth <= 550;
+  const {
+    result: testimonials,
+    error,
+    loading,
+  } = useGetData<CustomerInterface[]>({
+    endpoint: "testimonial",
+  });
+
+  if (loading) {
+    return <p>loading...</p>;
+  }
+
+  if (error) {
+    return <ErrorPage error={error} />;
+  }
 
   return (
     <div className="customers-container padding">
@@ -17,7 +35,7 @@ export const Customers = () => {
       </div>
       <div className="customers-card-container">
         {testimonials
-          .slice(startIndex, startIndex + (isMobile ? 1 : 3))
+          ?.slice(startIndex, startIndex + (isMobile ? 1 : 3))
           .map((testimonial, index) => (
             <div
               className={`customer-card ${index === 0 ? "active-card" : ""}`}
@@ -27,9 +45,9 @@ export const Customers = () => {
                 <img src={testimonial.avatar} alt={testimonial.fullName} />
                 <div className="customer-card-name">
                   <strong>{testimonial.fullName}</strong>
-                  <p>{testimonial.location}</p>
+                  <p>Warsaw, Poland</p>
                 </div>
-                <p>{testimonial.rate}</p>
+                <p>4.5</p>
                 <i className="fa-solid fa-star"></i>
               </div>
               <div className="customer-card-user-description">
@@ -40,7 +58,7 @@ export const Customers = () => {
       </div>
       <div className="customers-slider-components">
         <div className="pagination-dots">
-          {testimonials.map((X, index) => (
+          {testimonials?.map((X, index) => (
             <div
               key={index}
               className={`dot ${startIndex === index ? "active-dot" : ""}`}
@@ -53,7 +71,7 @@ export const Customers = () => {
           </button>
           <button
             onClick={() =>
-              setStartIndex(Math.min(testimonials.length - 1, startIndex + 1))
+              setStartIndex(Math.min(testimonials?.length - 1, startIndex + 1))
             }
           >
             <i className="fa-solid fa-arrow-right fa-lg"></i>
@@ -62,8 +80,4 @@ export const Customers = () => {
       </div>
     </div>
   );
-<<<<<<< HEAD
-}
-=======
 };
->>>>>>> ae9aab69e42c293d2281d22cb35c40687b67acac

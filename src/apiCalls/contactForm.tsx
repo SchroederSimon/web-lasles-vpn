@@ -1,9 +1,7 @@
-
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { BASE_URL } from "./baseURL";
-
 
 const schema = yup.object({
   name: yup.string().required(),
@@ -14,7 +12,7 @@ const schema = yup.object({
 
 type FormData = yup.InferType<typeof schema>;
 
-export const ContactLogic = () => {
+export const useContactLogic = () => {
   const {
     register,
     handleSubmit,

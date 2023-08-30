@@ -1,9 +1,9 @@
 import "./contact.css";
-import { ContactLogic } from "../../apiCalls/contactForm";
+import { useContactLogic } from "../../apiCalls/contactForm";
 import ButtonPrimary from "../../components/Button-primary/ButtonPrimary";
 
 export const Contact = () => {
-  const { register, handleSubmit, errors, onSubmit } = ContactLogic();
+  const { register, handleSubmit, errors, onSubmit } = useContactLogic();
 
   const theme = {
     text: "Send",

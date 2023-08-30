@@ -22,3 +22,5 @@ export { default as Kim } from "../assets/Kim.svg";
 export { default as Facebook } from "../assets/Facebook.svg";
 export { default as Twitter } from "../assets/Twitter.svg";
 export { default as Instagram } from "../assets/Instagram.svg";
+/* Error */
+export { default as Error } from "../assets/error.svg";
