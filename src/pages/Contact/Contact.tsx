@@ -5,7 +5,7 @@ import ButtonPrimary from "../../components/Button-primary/ButtonPrimary";
 export const Contact = () => {
   const { register, handleSubmit, errors, onSubmit } = useContactLogic();
 
-  const theme = {
+  const buttonThemeSend = {
     text: "Send",
   };
 
@@ -37,7 +37,7 @@ export const Contact = () => {
           <p>{errors.text?.message}</p>
         </div>
         <div className="contact-button">
-          <ButtonPrimary theme={theme} />
+          <ButtonPrimary buttonTheme={buttonThemeSend} />
         </div>
       </form>
     </div>

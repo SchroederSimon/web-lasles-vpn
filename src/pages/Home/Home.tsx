@@ -3,7 +3,7 @@ import { Illustration, User, Location, Server } from '../../utils/SVGS';
 import { NavbarProps } from '../../interfaces/IsOpen';
 
 export const Home: React.FC<NavbarProps> = ({ isMenuOpen }) => {
-  
+
   return (
       <main className={`hero padding ${isMenuOpen ? "active" : ""}`}>
         <div className="hero-middle-content">

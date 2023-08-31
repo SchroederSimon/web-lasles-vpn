@@ -18,7 +18,7 @@ export const Pricing = () => {
     endpoint: "subscription",
   });
   
-  const theme = {
+  const buttonThemeSelect = {
     text: "Select",
   };
   
@@ -74,7 +74,7 @@ export const Pricing = () => {
                 <strong>{subscription.price}</strong> {subscription.currency}{" "}
                 {subscription.type}
               </p>
-              <ButtonPrimary theme={theme} />
+              <ButtonPrimary buttonTheme={buttonThemeSelect} />
             </div>
           </div>
         ))}

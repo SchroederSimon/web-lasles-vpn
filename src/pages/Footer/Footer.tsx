@@ -1,12 +1,15 @@
 import "./footer.css";
 import { Logo } from "../../utils/SVGS";
 import { linksData } from "../../utils/data";
+import { useTheme } from "../../ThemeContext";
 
 export const Footer = () => {
+  const { theme } = useTheme();
+
   return (
-    <footer className="footer-container padding">
+    <footer className={`footer-container padding ${theme}`}>
       <div className="footer-left">
-        <img className="footer-logo" src={Logo} alt="" />
+        <img className={`footer-logo ${theme}`} src={Logo} alt="" />
         <p>
           LaslesVPN is a private virtual network that has unique features and
           has high security.

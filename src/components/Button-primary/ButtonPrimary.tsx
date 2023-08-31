@@ -1,15 +1,15 @@
 import "./buttonPrimary.css";
 
-interface Theme {
+interface ButtonTheme {
   backgroundclass?: string;
   text: string;
 }
 
-function ButtonPrimary({ theme }: { theme: Theme }) {
+function ButtonPrimary({ buttonTheme }: { buttonTheme: ButtonTheme }) {
   return (
-    <div className={`button-primary ${theme.backgroundclass}`}>
+    <div className={`button-primary ${buttonTheme.backgroundclass}`}>
       <button>
-        <span>{theme.text}</span>
+        <span>{buttonTheme.text}</span>
       </button>
     </div>
   );

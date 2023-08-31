@@ -72,6 +72,15 @@
   margin-bottom: 20px;
 }
 
+/* Dark mode bckg */
+.footer-container.dark{
+  background-color: var(--blackShadow);
+}
+.footer-logo.dark{
+  filter: invert(50%) brightness(1112%);
+  background-color: transparent;
+}
+
 @media screen and (max-width: 550px) {
   .footer-links {
     display: none;
